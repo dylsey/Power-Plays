@@ -48,6 +48,6 @@ int main()
 
 bool guessAgain(int guess, int solution, int numGuesses)
 {
-
+	int commitFromLaptop;
 	return false;
 }
