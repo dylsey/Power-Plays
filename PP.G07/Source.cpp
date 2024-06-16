@@ -1,53 +1,57 @@
 #include <iostream>
-bool guessAgain(int guess, int solution, int numGuesses);
+
+bool guessAgain(int &guess, int &solution, int &numGuesses);
+
 int main()
 {
 	std::cout << "User 1, choose a number between 1 and 10. " << std::endl;
-	int gameNumber{};
-	std::cin >> gameNumber;
+	int solution{};
+	std::cin >> solution;
+
+	while (solution < 1 || solution > 10)
+	{
+		std::cout << "please pick a number between 1 and 10." << std::endl;
+		std::cin >> solution;
+	}
 	system("CLS");
 
-	std::cout << "User 2, guess the number between 1 and 10. " << "\n"
-		<< "You have 3 tries :) " << std::endl;
-	int tries{ 1 };
-	int userGuess{};
-	bool isWinner{ false };
-	do
-	{
-		std::cin >> userGuess;
-		if (userGuess > 0 && userGuess <= 10)
-		{
-			if (userGuess == gameNumber)
-			{
-				std::cout << "you got it! " << std::endl;
-				isWinner = true;
-				break;
-			}
-			else if ((userGuess != gameNumber) && (tries < 3))
-			{
-				std::cout << "tries left: " << (3 - tries) << std::endl;
-				std::cout << "choose anoter number " << std::endl;
-			}
-			tries++;
-		}
-		else
-		{
-			std::cout << "pick a number between 1 and 10 . : )" << std::endl;
-		}
-	} while (tries <= 3);
+	int numGuesses{};
+	int guess{};
 
-	if (isWinner)
+	while (guessAgain( guess, solution, numGuesses))
 	{
-		std::cout << " You Win!!!! " << std::endl;
-	}
-	else
-	{
-		std::cout << "nice try, but you loose. : ( ... " << std::endl;
+		std::cout << "You have " << 3 - numGuesses << " attempts remaining :) " << std::endl;
 	}
 }
 
-bool guessAgain(int guess, int solution, int numGuesses)
+bool guessAgain(int &guess, int &solution, int & numGuesses)
 {
-	int commitFromLaptop;
-	return false;
+	if (numGuesses >= 3)
+	{
+		std::cout << "sorry you lose. " << std::endl;
+		return false;
+	}
+	else if (numGuesses < 3)
+	{
+		std::cout << "User 2, guess the number between 1 and 10. " << std::endl;
+		std::cin >> guess;
+		while (guess <= 0 || guess > 10)
+		{
+			std::cout << "pick a number in bounds. " << std::endl;
+			std::cin >> guess;
+		}
+		if (guess == solution)
+		{
+			std::cout << " Winner! Winner! " << std::endl;
+			return false;
+		}
+		else if ((guess != solution) && (numGuesses < 3))
+		{
+			numGuesses++;
+			return true;
+		}
+	}
 }
+
+
+

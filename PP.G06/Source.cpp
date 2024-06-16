@@ -2,38 +2,38 @@
 int main()
 {
 	std::cout << "User 1, choose a number between 1 and 10. " << std::endl;
-	int gameNumber{};
-	std::cin >> gameNumber;
+	int solution{};
+	std::cin >> solution;
 	system("CLS");
 
 	std::cout << "User 2, guess the number between 1 and 10. " << "\n"
-		<< "You have 3 tries :) " << std::endl;
-	int tries{ 1 };
-	int userGuess{};
+		<< "You have 3 numGuesses :) " << std::endl;
+	int numGuesses{ 1 };
+	int guess{};
 	bool isWinner{false}; 
 	do
 	{	
-		std::cin >> userGuess;
-		if (userGuess > 0 && userGuess <= 10)
+		std::cin >> guess;
+		if (guess > 0 && guess <= 10)
 		{
-			if (userGuess == gameNumber)
+			if (guess == solution)
 			{
 				std::cout << "you got it! " << std::endl;
 				isWinner = true; 
 				break;
 			}
-			else if ((userGuess != gameNumber) && (tries < 3))
+			else if ((guess != solution) && (numGuesses < 3))
 			{
-				std::cout << "tries left: " << (3 - tries) << std::endl;
+				std::cout << "numGuesses left: " << (3 - numGuesses) << std::endl;
 				std::cout << "choose anoter number " << std::endl;
 			}
-			tries++;
+			numGuesses++;
 		} 
 		else
 		{
 			std::cout << "pick a number between 1 and 10 . : )" << std::endl;
 		}
-	} while (tries <= 3); 
+	} while (numGuesses <= 3); 
 
 	if (isWinner)
 	{

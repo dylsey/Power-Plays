@@ -5,10 +5,19 @@
 
 int main()
 {
+	int x{ 3 };
+	int y{ 4 };
+	float z;
+	z = x / y;
+	std::cout << z; 
 
-	int a{ 3 };
+
+
+/*	int a{ 3 };
 	int b{ a };
 	a = 4;
+	a--; 
+
 
 	int& c{ a };
 	a = 5;
@@ -17,7 +26,7 @@ int main()
 	a = 6;
 
 
-	std::vector<int> vIn;
+	std::vector<int> vInt;
 	vInt.push_back(2);
 	std::cout << vInt.size();
 
@@ -38,5 +47,5 @@ int main()
 	{
 		myInt++;
 		std::cout << myInt << std::endl;
-	}
+	}*/ 
 }
