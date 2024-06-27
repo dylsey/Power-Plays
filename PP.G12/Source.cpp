@@ -31,6 +31,7 @@ int main()
 			std::string john{ "john" };
 
 			std::cin >> choice;
+			
 
 			if (choice.compare(sally)==0)
 			{
@@ -50,6 +51,7 @@ int main()
 					dadsWallet--;
 					std::cout << "dad picked sally" << std::endl;
 					std::cout << "sally's allowance: $" << sallysAllowance << std::endl;
+					
 				}
 			}
 			else
